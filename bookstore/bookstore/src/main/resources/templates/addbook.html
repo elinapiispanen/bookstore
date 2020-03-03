@@ -1,19 +1,41 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add a book</title>
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Add a book</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Book</h1>
-	<form action="#" th:action="@{/newbook}"  th:object= ${book} method="post">
-	<p>Author: <input type="text" th:field="${book.author}" /></p>
-	<p>Title: <input type="text" th:field="${book.title}" /></p>
-	<p>ISBN: <input type="text" th:field="${book.isbn}" /></p>
-	<p>Year: <input type="text" th:field="${book.year}" /></p>
-	<input type="submit" value="Submit" class="btn btn-success" /> <input type="reset" value="Reset" class="btn btn-danger" />
+	<form action="#" th:action="@{/newbook}" th:object=${book}
+		method="post">
+		<p>
+			Author: <input type="text" th:field="${book.author}" />
+		</p>
+		<p>
+			Title: <input type="text" th:field="${book.title}" />
+		</p>
+		<p>
+			ISBN: <input type="text" th:field="${book.isbn}" />
+		</p>
+		<p>
+			Year: <input type="text" th:field="${book.year}" />
+		</p>
+
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<div style="width: 100px;">
+		<label for="categorylist">Category</label> <select id="categorylist"
+			th:field="*{category}" class="form-control">
+			<option th:each="category: ${categories}"
+				th:value="category.categoryid" th:text="${category.name}"></option>
+		</select>
+		</div>
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<input type="submit" value="Submit" class="btn btn-success" /> <input
+			type="reset" value="Reset" class="btn btn-danger" />
 	</form>
-    
+
 </body>
 </html>
