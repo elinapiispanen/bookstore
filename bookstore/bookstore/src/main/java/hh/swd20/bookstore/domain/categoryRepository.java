@@ -1,14 +1,9 @@
 package hh.swd20.bookstore.domain;
 
 import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 
+public interface categoryRepository extends CrudRepository<Category, Long>{
 
-
-public interface BookRepository extends CrudRepository<Book, Long> {
-
-	
-	List<Book> findByTitle(String title);
-	
+	List<Category> findByName(String name);
 }
