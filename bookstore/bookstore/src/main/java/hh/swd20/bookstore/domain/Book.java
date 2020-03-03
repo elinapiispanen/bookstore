@@ -42,15 +42,7 @@ public class Book {
 		this.category = category;
 	}
 
-	public Book() {
-		super();
-		this.id = null;
-		this.title = null;
-		this.author = null;
-		this.year = 0;
-		this.isbn = null;
-		this.price = 0;
-	}
+	public Book() {	}
 	public double getPrice() {
 		return price;
 	}
