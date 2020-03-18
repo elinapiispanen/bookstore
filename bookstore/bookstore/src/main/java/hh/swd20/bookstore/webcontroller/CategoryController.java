@@ -1,6 +1,5 @@
 package hh.swd20.bookstore.webcontroller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import hh.swd20.bookstore.domain.BookRepository;
 import hh.swd20.bookstore.domain.Category;
 import hh.swd20.bookstore.domain.categoryRepository;
 
@@ -19,10 +19,12 @@ public class CategoryController {
 @Autowired
 categoryRepository categoryRepository;
 
+@Autowired
+BookRepository BookRepository;
+
 @RequestMapping(value="/categorylist", method=RequestMethod.GET)
 public String showCategories(Model model) {
-	List<Category> categories = (List<Category>) categoryRepository.findAll();
-	model.addAttribute("category", new Category());
+	model.addAttribute("categories", categoryRepository.findAll());
 	return "categorylist";
 
 }
