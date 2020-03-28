@@ -81,4 +81,8 @@ public String save(@ModelAttribute Book book) {
 	BookRepository.save(book);
 	return "redirect:/booklist";
 }
+@RequestMapping("/")
+public @ResponseBody String greeting() {
+    return "Hello World";
+}
 }

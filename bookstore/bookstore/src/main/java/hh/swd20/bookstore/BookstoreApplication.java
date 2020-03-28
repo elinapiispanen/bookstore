@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Bean;
 import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
 import hh.swd20.bookstore.domain.Category;
+import hh.swd20.bookstore.domain.User;
 import hh.swd20.bookstore.domain.categoryRepository;
+import hh.swd20.bookstore.domain.UserRepository;
+
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,7 +25,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository, categoryRepository categoryRepository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository, categoryRepository categoryRepository, UserRepository userRepository) {
 		return (args) -> {
 			log.info("save a couple of books");
 			categoryRepository.save(new Category("Scifi"));
@@ -33,7 +36,8 @@ public class BookstoreApplication {
 			bookRepository.save(new Book("Rikoskirja", "Kirjailija", 3030, "2321212-21", categoryRepository.findByName("Crime").get(0)));
 			bookRepository.save(new Book("Hauska kirja", "Hauskus", 2010, "1913441-12", categoryRepository.findByName("Comic").get(0)));
 
-
+			userRepository.save(new User("user", "$2a$10$7RtUmxxp1YWC1SGdoYyltudyUhNbDEWuadgaKZAXQwm7bpJrXcSe.", "USER"));
+			userRepository.save(new User("admin", "$2a$10$7RtUmxxp1YWC1SGdoYyltudyUhNbDEWuadgaKZAXQwm7bpJrXcSe.", "ADMIN"));
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
